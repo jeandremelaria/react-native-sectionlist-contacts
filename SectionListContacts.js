@@ -31,6 +31,7 @@ export default class SectionListModule extends Component {
         scrollAnimation:PropTypes.bool,//是否启动动画
         showAlphabet:PropTypes.bool, //是否显示右边字母
         otherAlphabet:PropTypes.string, //其他的字符串
+        showFullAlphabet: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -38,6 +39,7 @@ export default class SectionListModule extends Component {
         sectionHeaderHeight: 25,
         scrollAnimation: false,
         showAlphabet: true,
+        showFullAlphabet: false,
         otherAlphabet: '其他'
     };
 
@@ -97,6 +99,8 @@ export default class SectionListModule extends Component {
         for (var i in data){
             if (data[i].data.length!=0){
                 delData.push(data[i])
+                letterData.push(data[i].key)
+            } else if (this.props.showFullAlphabet) {
                 letterData.push(data[i].key)
             }
         }
